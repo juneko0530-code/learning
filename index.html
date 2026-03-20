@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서비스 소개 - AI MediCare</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        .gradient-bg {
+            background: radial-gradient(circle at top right, rgba(244, 63, 94, 0.05), transparent),
+                        radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.05), transparent);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen gradient-bg">
+
+    <!-- Header -->
+    <header class="py-12 px-6 border-b border-slate-900">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2 font-bold text-2xl">
+                <i data-lucide="heart-pulse" class="text-rose-500"></i>
+                <span>AI MediCare</span>
+            </div>
+            <a href="/01/index.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition-colors font-medium">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> 홈으로 돌아가기
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-extrabold mb-4">우리의 서비스</h1>
+            <p class="text-slate-400 text-lg mb-12">인공지능을 통해 더 나은 의료 경험을 제공합니다.</p>
+
+            <div id="service-list" class="space-y-8">
+                <!-- Dynamically populated -->
+            </div>
+
+            <div class="mt-20 p-8 rounded-3xl bg-rose-600 text-white text-center">
+                <h2 class="text-2xl font-bold mb-4">지금 바로 경험해 보세요</h2>
+                <p class="mb-8 opacity-90">당신의 건강 데이터를 분석하여 최적의 가이드를 제공합니다.</p>
+                <a href="/01/index.html#contact" class="inline-block bg-white text-rose-600 px-8 py-3 rounded-full font-bold hover:bg-slate-100 transition-all">
+                    상담 신청하기
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 border-t border-slate-900 text-center text-slate-600 text-sm">
+        <p>© 2024 AI MediCare. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const detailedServices = [
+            {
+                title: "AI 증상 가이드 (Symptom Guide)",
+                desc: "사용자가 입력한 증상 데이터를 바탕으로 수천 개의 임상 사례를 대조 분석합니다. 단순 검색을 넘어, 증상의 심각도를 판단하고 적절한 조치 방법을 단계별로 안내합니다.",
+                icon: "activity",
+                color: "text-rose-400"
+            },
+            {
+                title: "약물 정보 분석 (Drug Analytics)",
+                desc: "처방전 사진 촬영만으로 성분을 자동 인식합니다. 약물 간 상호작용을 체크하여 위험 요소를 사전에 경고하고, 올바른 복용 시점과 주의사항을 AI 비서가 관리해 드립니다.",
+                icon: "pill",
+                color: "text-blue-400"
+            },
+            {
+                title: "스마트 건강 비서 (Smart Wellness)",
+                desc: "주기적인 건강검진 데이터의 추이를 그래프로 시각화합니다. 혈압, 혈당 등 주요 수치의 변화를 추적하여 질환 위험도를 예측하고 맞춤형 생활 습관을 제안합니다.",
+                icon: "shield-plus",
+                color: "text-emerald-400"
+            },
+            {
+                title: "전문의 매칭 (Expert Matching)",
+                desc: "증상 분석 결과에 최적화된 지역 내 전문 의료진을 추천합니다. 예약 시스템과 연동되어 대기 시간을 최소화하고, 진료 전 필요한 기초 정보를 병원에 미리 전달합니다.",
+                icon: "map-pin",
+                color: "text-orange-400"
+            }
+        ];
+
+        function renderServices() {
+            const list = document.getElementById('service-list');
+            list.innerHTML = detailedServices.map(s => `
+                <div class="p-8 rounded-2xl bg-slate-900/50 border border-slate-800 flex flex-col md:flex-row gap-6 items-start">
+                    <div class="p-4 bg-slate-800 rounded-2xl">
+                        <i data-lucide="${s.icon}" class="w-8 h-8 ${s.color}"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-3">${s.title}</h3>
+                        <p class="text-slate-400 leading-relaxed">${s.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        window.onload = renderServices;
+    </script>
+</body>
+</html>
